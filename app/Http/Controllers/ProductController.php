@@ -56,4 +56,26 @@ class ProductController extends Controller
         // izsaukt to no kontroliera
         
     }
+
+    public function edit($id) {
+        $product = Product::find($id);
+        if (isset($product)) {
+            return view("products.edit", ["product" => $product]);
+        }
+
+        return redirect("/products");
+    }
+
+    public function update(Request $request, Product $product) {
+        $request->validate(
+            [
+                "name" => ["required", "min:5", "max:50"],
+                "description" => ["required", "min:5", "max:255"],
+                "price" => ["required", "numeric"],
+                "image" => ["required", "image", "max:10240"]
+            ]
+            );
+        $product = Product::find($request->id);
+        dd($product);
+    }
 }
