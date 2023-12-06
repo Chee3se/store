@@ -11,7 +11,8 @@
   <main>
     @foreach($products as $product)
     <article>
-      <h2>{{$product->name}}</h2>
+    <h2>
+      <h2><a href="/products/{{$product->id}}">{{$product->name}}</a></h2>
       <img src={{$product->imageURL}} alt="{{$product->name}}" width="200px"/>
       <p>{{$product->description}}
       </p>

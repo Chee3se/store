@@ -19,8 +19,9 @@
   @endif
 
   <h1>Edit product {{$product->name}}</h1>
-  <form method="POST" action="/products/{{$products->id}}" enctype="multipart/form-data">
+  <form method="POST" action="/products/{{$product->id}}" enctype="multipart/form-data">
     @csrf
+    @method('PUT')
     <label>
       Product name:
       <input name="name" value="{{$product->name}}"/>
